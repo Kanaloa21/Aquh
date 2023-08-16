@@ -6,19 +6,16 @@ import java.util.Map;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import com.ssafy.team8alette.domain.bubble.session.exception.SessionNotFoundException;
 
 import io.openvidu.java.client.OpenViduHttpException;
 import io.openvidu.java.client.OpenViduJavaClientException;
 
-@RestControllerAdvice
 public class BubbleSessionHandler {
 
 	@ExceptionHandler(OpenViduJavaClientException.class)
-	public ResponseEntity<Map<String, Object>> oenViduJavaClientExceptionHandler(
-		OpenViduJavaClientException exception) {
+	public ResponseEntity<Map<String, Object>> nullValueHandler(OpenViduJavaClientException exception) {
 		Map<String, Object> nullCheck = new HashMap<>();
 		nullCheck.put("message", "세션이 생성되지 않았습니다");
 		nullCheck.put("status", 400);
@@ -27,7 +24,7 @@ public class BubbleSessionHandler {
 	}
 
 	@ExceptionHandler(OpenViduHttpException.class)
-	public ResponseEntity<Map<String, Object>> openViduHttpExceptionHandler(OpenViduHttpException exception) {
+	public ResponseEntity<Map<String, Object>> nullValueHandler(OpenViduHttpException exception) {
 
 		Map<String, Object> nullCheck = new HashMap<>();
 		nullCheck.put("message", "세션이 생성되지 않았습니다");
@@ -37,7 +34,7 @@ public class BubbleSessionHandler {
 	}
 
 	@ExceptionHandler(SessionNotFoundException.class)
-	public ResponseEntity<Map<String, Object>> sessionNotFoundExceptionHandler(SessionNotFoundException exception) {
+	public ResponseEntity<Map<String, Object>> nullValueHandler(SessionNotFoundException exception) {
 
 		Map<String, Object> nullCheck = new HashMap<>();
 		nullCheck.put("message", "아직 세션이 존재하지 않습니다.");
@@ -46,4 +43,15 @@ public class BubbleSessionHandler {
 		return new ResponseEntity<>(nullCheck, status);
 	}
 
+	// } catch (OpenViduJavaClientException e1) {
+	// 	// If internal error generate an error message and return it to client
+	// 	return getErrorResponse(e1);
+	// } catch (OpenViduHttpException e2) {
+	// 	if (404 == e2.getStatus()) {
+	// 		// Invalid sessionId (user left unexpectedly). Session object is not valid
+	// 		// anymore. Clean collections and continue as new session
+	// 		this.mapSessions.remove(sessionName);
+	// 		this.mapSessionNamesTokens.remove(sessionName);
+	// 	}
+	// }
 }
