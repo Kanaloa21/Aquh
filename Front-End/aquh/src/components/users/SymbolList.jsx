@@ -32,6 +32,8 @@ export default function SymbolList() {
       symbolName={e.symbolName}
       isAcquired={e.symbolActive}
       isActive={e.acquiredActive}
+      symbolCode={e.symbolCode}
+      symbolConditionCnt={e.symbolConditionCnt}
     />
   ));
   return <div className={classes.symbolContainer}>{symbolcards}</div>;
