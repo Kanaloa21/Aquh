@@ -1,4 +1,4 @@
-<img src="https://capsule-render.vercel.app/api?type=waving&color=648CCD&height=250&section=header&text=💧 Aquh&fontSize=90&fontAlign=75&fontAlignY=40&fontColor=D1F1FF" />
+<img src="https://capsule-render.vercel.app/api?type=waving&color=648CCD&height=250&section=header&text=💧Aquh&fontSize=90&fontAlign=75&fontAlignY=40&fontColor=D1F1FF" />
 
 ### 목차
 
